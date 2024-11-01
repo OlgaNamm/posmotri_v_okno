@@ -44,8 +44,8 @@ ol {
   display: flex;
   justify-content: flex-end;
   gap: 30px;
-  width: 1140px;
-  height: auto;
+  inline-size: 1140px;
+  writing-mode: horizontal-tb;
 }
 
 .result {
@@ -65,6 +65,8 @@ ol {
 .result__video {
   width: 100%;
   height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .search-form {
@@ -87,33 +89,31 @@ ol {
 
 .search-form__label {
   display: flex;
+  align-items: center;
   width: fit-content;
   gap: 5px;
   cursor: pointer;
 }
 
-.search-form__label:focus-visible {
-  outline-width: 1px;
-  outline-style: solid;
+.search-form__label:has(:focus-visible) {
+  outline: 1px solid #fff;
   outline-offset: 2px;
-  outline-color: #fff;
+}
+
+.search-form__checkbox-list .search-form__label:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+  text-decoration-color: #fff;
 }
 
 .search-form__label-text {
   font-family: 'Fira Sans Condensed', 'Arial', sans-serif;
   font-size: 18px;
   font-weight: 400;
-  line-height: 21.6px;
   text-align: left;
   color: #fff;
   appearance: none;
-}
-
-.search-form__label-text:hover {
-  text-decoration: underline;
-  text-underline-offset: 2px;
-  text-decoration-thickness: 1px;
-  text-decoration-color: #fff;
 }
 
 .search-form__textfield {
@@ -130,10 +130,8 @@ ol {
 }
 
 .search-form__textfield:focus-visible {
-  outline-width: 1px;
-  outline-style: solid;
+  outline: 1px solid #fff;
   outline-offset: 2px;
-  outline-color: #fff;
 }
 
 .search-form__checkbox-list {
@@ -184,30 +182,29 @@ ol {
   text-decoration-color: #fff;
 }
 
-.search-form__submit-button {
-  width: 194px;  
-  height: 34px;  
-  cursor: pointer;
+.button:focus {
+  outline: none;
 }
 
-.search-form__submit-button:focus-visible {
+.button:focus-visible {
   outline-width: 1px;
   outline-style: solid;
   outline-offset: 2px;
   outline-color: #fff;
 }
 
+.search-form__submit-button {
+  width: 194px;  
+  height: 34px;  
+}
+
 .more-button {
   width: 399px;
   height: 34px;
-  cursor: pointer;
 }
 
 .more-button:focus-visible {
-  outline-width: 1px;
-  outline-style: solid;
   outline-offset: -4px;
-  outline-color: #fff;
 }
 
 .content__details {
@@ -254,11 +251,20 @@ ol {
   color: #fff;
 }
 
+.content__card-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+  text-decoration-color: #fff;
+}
+
+.content__card-link:focus {
+  outline: none;
+}
+
 .content__card-link:focus-visible {
-  outline-width: 1px;
-  outline-style: solid;
+  outline: 1px solid #fff;
   outline-offset: -1px;
-  outline-color: #fff;
 }
 
 .content__card-link_current {
@@ -275,7 +281,11 @@ ol {
 }
 
 .content__video-card-title {
-  font-family: 'Oswald';
+  max-width: 200px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  font-family: 'Oswald', 'Calibri', sans-serif;
   font-size: 30px;
   font-weight: 700;
   text-transform: uppercase; 
@@ -286,6 +296,7 @@ ol {
   width: 194px;
   height: 103px;
   object-fit: cover;
+  object-position: right;
 }
 
 .visually-hidden {
